@@ -1,3 +1,4 @@
+import models.LoginModel;
 import models.RegisterModel;
 import static io.restassured.RestAssured.given;
 import io.qameta.allure.Step;
@@ -7,6 +8,7 @@ public class UserSteps {
     @Step("Регистрация")
     public Response register(RegisterModel model) {
         return given()
+                .log().all()
         .header("Content-type", "application/json")
         .body(model)
         .when()
@@ -20,5 +22,17 @@ public class UserSteps {
         .when()
         .delete("/api/auth/user");
     }
+
+    @Step ("Логин")
+    public Response login(LoginModel model) {
+        return given()
+                .log().all()
+                .header("Content-type", "application/json")
+                .body(model)
+                .when()
+                .post("/api/auth/login");
+    }
+
+
 }
 
