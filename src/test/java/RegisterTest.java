@@ -30,15 +30,7 @@ public class RegisterTest {
                 .and()
                 .statusCode(200);
     }
-    @AfterEach
-    public void clearing() {
-        if (token != null) {
-            userSteps.delete(token)
-            .then()
-            .assertThat()
-            .statusCode(200);
-        }
-    }
+
     @Test
     public void fegisterNotEmail() {
         RegisterModel registerModel = new RegisterModel();
@@ -54,5 +46,14 @@ public class RegisterTest {
                 .body("message", equalTo("Email, password and name are required fields"))
                 .and()
                 .statusCode(403);
+    }
+    @AfterEach
+    public void clearing() {
+        if (token != null) {
+            userSteps.delete(token)
+                    .then()
+                    .assertThat()
+                    .statusCode(200);
+        }
     }
 }
