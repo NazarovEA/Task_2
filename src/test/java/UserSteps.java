@@ -27,6 +27,7 @@ public class UserSteps {
     @Step ("Логин")
     public Response login(LoginModel model) {
         return given()
+
                 .log().all()
                 .header("Content-type", "application/json")
                 .body(model)

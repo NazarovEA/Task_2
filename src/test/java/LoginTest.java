@@ -40,7 +40,7 @@ public class LoginTest {
                 .statusCode(200);
     }
     @AfterEach
-    public void clearing() {
+    public void clearing(){
         if (token != null) {
             userSteps.delete(token);
  }
