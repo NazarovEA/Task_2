@@ -2,6 +2,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import models.LoginModel;
 import models.RegisterModel;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -37,5 +38,11 @@ public class LoginTest {
                 .body("accessToken", notNullValue())
                 .body("success", is(true))
                 .statusCode(200);
+    }
+    @AfterEach
+    public void clearing() {
+        if (token != null) {
+            userSteps.delete(token);
+ }
     }
 }

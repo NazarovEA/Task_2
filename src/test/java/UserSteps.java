@@ -18,6 +18,7 @@ public class UserSteps {
     @Step("Удаление")
     public Response delete(String token) {
         return given()
+                .log().all()
         .header("Authorization", token)
         .when()
         .delete("/api/auth/user");
