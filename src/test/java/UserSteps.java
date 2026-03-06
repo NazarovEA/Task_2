@@ -1,4 +1,5 @@
 import models.LoginModel;
+import models.OrdersModel;
 import models.RegisterModel;
 import static io.restassured.RestAssured.given;
 import io.qameta.allure.Step;
@@ -34,7 +35,16 @@ public class UserSteps {
                 .when()
                 .post("/api/auth/login");
     }
+@Step("Создание заказа")
+public Response NewOrder(OrdersModel order, String token){
+    return given()
 
-
+            .log().all()
+            .header("Content-type", "application/json")
+            .header("Authorization", token)
+            .body(order)
+            .when()
+            .post("/api/orders");
+}
 }
 
