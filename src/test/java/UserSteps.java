@@ -46,5 +46,18 @@ public Response NewOrder(OrdersModel order, String token){
             .when()
             .post("/api/orders");
 }
+
+//метод принимающий токен
+    @Step
+    public Response getOrderUser(String token){
+
+        return given()
+
+                .log().all()
+                .header("Content-type", "application/json")
+                .header("Authorization", token == null ? "" : token)
+                .when()
+                .get("/api/orders");
+    }
 }
 
