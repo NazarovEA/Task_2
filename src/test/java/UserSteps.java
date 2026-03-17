@@ -59,5 +59,12 @@ public Response NewOrder(OrdersModel order, String token){
                 .when()
                 .get("/api/orders");
     }
+    //запрос и получение списка всех доступных ингредиентов.
+    @Step
+    public Response getIngredients() {
+        return given()
+                .header("Content-type", "application/json")
+                .get("/api/ingredients");
+    }
 }
 

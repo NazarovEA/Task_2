@@ -28,4 +28,13 @@ public class RegisterModel {
     public void setName(String name) {
         this.name = name;
     }
+
+    public RegisterModel(String email, String password, String name) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+    }
+
+    public RegisterModel() {
+    }
 }
